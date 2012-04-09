@@ -20,6 +20,7 @@ describe "StaticPages" do
 
     it {should have_content('Home')}
     it {should have_selector('title', text: "Home")}
+    it {should have_selector('a', text: "Sign up")}
   end
     
   describe "Help page" do
