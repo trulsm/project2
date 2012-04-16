@@ -1,0 +1,12 @@
+<footer class="footer">
+  <small>
+    <a href="http://localhost:3000/static_pages/home.html#">project2</a>
+    by Truls Michalsen
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to "About", about_path %></li>
+      <li><%= link_to "Contact", contact_path %></li>
+    </ul>
+  </nav>
+</footer>
