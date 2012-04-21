@@ -7,6 +7,7 @@ describe Project do
   subject { @project }
 
   it { should respond_to(:name) }
+  it { should respond_to(:description)}
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
 	its(:user) { should == user }
