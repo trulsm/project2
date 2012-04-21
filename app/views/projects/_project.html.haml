@@ -1,0 +1,7 @@
+%li
+	%span.content
+		= project.name
+	%span.timestamp
+		Posted
+		= time_ago_in_words(project.created_at)
+		ago.

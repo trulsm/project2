@@ -1,7 +1,17 @@
 - provide(:title, @user.name)
 .row
-  %aside.span4
-    %section
-      %h1
-        = gravatar_for @user
-        = @user.name
+	%aside.span4
+		%section
+			%h1
+				= gravatar_for @user
+				= @user.name
+	%aside
+	.span8
+		- if @user.projects.any?
+			%h3
+				Projects (
+				= @user.projects.count
+				)
+			%ol.projects
+				= render @projects
+			= will_paginate @projects
