@@ -45,7 +45,7 @@ class UsersController < ApplicationController
         store_location
         redirect_to signin_path, notice: "Please sign in."
       end
-    end
+    end 
 
     def correct_user
       @user = User.find(params[:id])
