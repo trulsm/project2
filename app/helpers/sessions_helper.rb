@@ -5,6 +5,12 @@ module SessionsHelper
     current_user = user
   end
 
+  def sign_out
+    #Delete remember_token from cookies and set current_user to nil
+    cookies.delete(:remember_token)
+    current_user = nil
+  end
+
   def signed_in?
   	!current_user.nil?
   end
