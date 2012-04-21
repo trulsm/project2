@@ -4,6 +4,7 @@ gem 'rails', '3.2.3'
 gem 'bootstrap-sass', '2.0.0'
 gem 'bcrypt-ruby', '3.0.1'
 gem 'haml', '~> 3.1.4'
+gem 'faker', '1.0.1'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
