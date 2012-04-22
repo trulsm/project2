@@ -90,4 +90,56 @@ describe "UserPages" do
       specify { user.reload.email.should == new_email }
     end
   end
+
+  #Prøver meg på noen users-page tester:
+  describe "users page" do
+
+    describe "for non-admins" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        sign_in user
+      end
+      it {should_not have_selector('a', text: "Users")}
+    end
+
+    describe "for admins" do
+      let(:admin) {FactoryGirl.create(:admin)}
+      before do
+        sign_in admin
+      end
+      it {should have_selector('a', text: "Users")}
+    end
+  end
+
+  describe "index" do
+
+    describe "pagination" do
+    let(:admin) { FactoryGirl.create(:admin) }
+      before do
+        sign_in admin
+        visit users_path
+      end
+      # Fyll inn testing av pagination
+    end
+
+    describe "should allow access for admins" do
+      let(:admin) { FactoryGirl.create(:admin) }
+      before do
+        sign_in admin
+        visit users_path
+      end
+      it { should have_selector('title', text: 'All users') }
+      it { should_not have_link('delete', href: user_path(admin)) } 
+    end
+
+    describe "should deny access for non-admins" do
+      let(:user) { FactoryGirl.create(:user) }
+      before do
+        sign_in user
+        visit users_path
+      end
+
+      it {should have_selector('title', text: "Home")}
+    end
+  end
 end
