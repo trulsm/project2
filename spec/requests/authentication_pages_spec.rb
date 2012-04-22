@@ -39,7 +39,7 @@ describe "Authentication" do
     end
   end
 
-  # Denne har jeg skrevet selv
+  # Denne har jeg utformet spesifikt:
   describe "sign out" do
     before {visit signout_path}
 
@@ -62,6 +62,22 @@ describe "Authentication" do
 
         describe "submitting the update action" do
           before {put user_path(user)}
+          specify {response.should redirect_to(signin_path)}
+        end
+      end
+
+      describe "in the projects controller" do
+        
+        describe "submitting to the create action" do
+          before {post projects_path}
+          specify {response.should redirect_to(signin_path)}
+        end
+
+        describe "submitting to the destroy action" do
+          before do
+            project = FactoryGirl.create(:project)
+            delete project_path(project)
+          end
           specify {response.should redirect_to(signin_path)}
         end
       end

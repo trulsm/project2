@@ -5,6 +5,8 @@
 			%h1
 				= gravatar_for @user
 				= @user.name
+				%br
+				= link_to "Create new project", new_project_path
 	%aside
 	.span8
 		- if @user.projects.any?
