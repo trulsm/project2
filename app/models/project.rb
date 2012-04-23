@@ -11,7 +11,7 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :name
+  attr_accessible :name, :description
   belongs_to :user
 
   validates :user_id, presence: true
