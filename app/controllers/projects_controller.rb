@@ -24,6 +24,14 @@ class ProjectsController < ApplicationController
 		@project = Project.find(params[:id])
 	end
 
+	def edit
+		
+	end
+
+	def update
+		
+	end
+
 	def destroy
 		
 	end

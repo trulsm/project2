@@ -112,33 +112,34 @@ describe "UserPages" do
   end
 
   describe "index" do
+    before {visit users_path}
 
     describe "pagination" do
-    let(:admin) { FactoryGirl.create(:admin) }
-      before do
-        sign_in admin
-        visit users_path
+      let(:admin) { FactoryGirl.create(:admin) }
+      before {sign_in admin}
+      before(:all) { 30.times { FactoryGirl.create(:user) } }
+      after(:all)  { User.delete_all }
+
+      it { should have_link('Next') }
+      its(:html) { should match('>2</a>') }
+
+      it "should list each user" do
+        User.all[0..2].each do |user|
+          page.should have_selector('li', text: user.name)
+        end
       end
-      # Fyll inn testing av pagination
     end
 
     describe "should allow access for admins" do
       let(:admin) { FactoryGirl.create(:admin) }
-      before do
-        sign_in admin
-        visit users_path
-      end
+      before {sign_in admin}
       it { should have_selector('title', text: 'All users') }
       it { should_not have_link('delete', href: user_path(admin)) } 
     end
 
     describe "should deny access for non-admins" do
       let(:user) { FactoryGirl.create(:user) }
-      before do
-        sign_in user
-        visit users_path
-      end
-
+      before {sign_in user}
       it {should have_selector('title', text: "Home")}
     end
   end

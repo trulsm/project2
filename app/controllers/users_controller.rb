@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     unless current_user.admin?
       redirect_to root_path, notice: "Only admins are allowed."
     end
-    @users = User.all
+    @users = User.paginate(page: params[:page])
   end
   
   def show

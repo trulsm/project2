@@ -3,6 +3,7 @@
 	All users (
 	= @users.count
 	)
+= will_paginate @users
 %ul.users
 	- @users.each do |user|
 		%li
@@ -11,3 +12,4 @@
 			- unless user == current_user 
 				|
 				= link_to "delete", user, method: :delete, confirm: "You sure?"
+= will_paginate @users
