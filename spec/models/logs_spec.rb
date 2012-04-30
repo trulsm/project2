@@ -2,12 +2,11 @@
 #
 # Table name: logs
 #
-#  id          :integer         not null, primary key
-#  name        :string(255)
-#  description :text
-#  project_id  :integer
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
+#  id         :integer         not null, primary key
+#  project_id :integer
+#  created_at :datetime        not null
+#  updated_at :datetime        not null
+#  data_reg   :integer
 #
 
 require 'spec_helper'
@@ -15,13 +14,10 @@ require 'spec_helper'
 describe Logs do
   let(:user) { FactoryGirl.create(:user) }
   let(:project) { FactoryGirl.create(:project) }
-	before {@log = project.logs.build(name: "Sleep",
-																					description: "How much sleep")}
+	before {@log = project.logs.build(data_reg: 1)}
 
 	subject {@log}
 
-	it {should respond_to(:name)}
-	it {should respond_to(:description)}
 	it {should respond_to(:project_id)}
   it {should respond_to(:data_reg)}
   its(:project) { should == project }
@@ -31,7 +27,7 @@ describe Logs do
   describe "accessible attributes" do
     it "should not allow access to user_id" do
       expect do
-        Micropost.new(user_id: user.id)
+        Log.new(user_id: user.id)
       end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end   
   end
