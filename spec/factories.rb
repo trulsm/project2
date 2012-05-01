@@ -14,4 +14,9 @@ FactoryGirl.define do
   	name "Lorem ipsum"
   	user
   end
+
+  factory :log do
+    data_reg 1
+    project
+  end
 end

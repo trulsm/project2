@@ -11,10 +11,13 @@
 
 require 'spec_helper'
 
-describe Logs do
+describe Log do
   let(:user) { FactoryGirl.create(:user) }
   let(:project) { FactoryGirl.create(:project) }
-	before {@log = project.logs.build(data_reg: 1)}
+
+  before do
+    @log = project.logs.build(data_reg: 1)
+  end
 
 	subject {@log}
 
@@ -25,9 +28,9 @@ describe Logs do
   it { should be_valid }
 
   describe "accessible attributes" do
-    it "should not allow access to user_id" do
+    it "should not allow access to project_id" do
       expect do
-        Log.new(user_id: user.id)
+        Log.new(project_id: project.id)
       end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end   
   end

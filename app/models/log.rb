@@ -9,8 +9,8 @@
 #  data_reg   :integer
 #
 
-class Logs < ActiveRecord::Base
-  attr_accessible :description, :name
+class Log < ActiveRecord::Base
+  attr_accessible :data_reg
   belongs_to :project
 
   validates :project_id, presence: true
