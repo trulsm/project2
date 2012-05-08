@@ -21,7 +21,9 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
+		@user = user_from_remember_token
 		@project = Project.find(params[:id])
+		@logs = @project.logs.all
 	end
 
 	def edit

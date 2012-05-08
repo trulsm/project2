@@ -1,6 +1,6 @@
 %li
 	%span.content
-		= link_to project.name, project_path
+		= link_to project.name, project_path(project)
 	%span.timestamp
 		Posted
 		= time_ago_in_words(project.created_at)

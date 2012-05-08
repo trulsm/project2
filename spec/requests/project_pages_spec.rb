@@ -48,6 +48,23 @@ describe "ProjectPages" do
 
   	it {should have_selector('h1', text: project.name)}
   	it {should have_selector('title', text: project.name)}
-  	it {should have_selector('p', text: "log")}
+    
+    describe "submit data entry with invalid information" do
+      it "should not create a log" do
+        expect { click_button "Continue" }.should_not change(Log, :count)
+      end
+
+    end
+
+    describe "submit data entry with valid information" do
+
+      before do
+        fill_in "Data reg",         with: (1+rand(6))
+      end
+      it "should create a project" do
+        expect { click_button "Continue" }.should change(Log, :count).by(1)
+      end
+    end
+
   end
 end

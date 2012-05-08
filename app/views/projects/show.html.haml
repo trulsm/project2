@@ -1,3 +1,28 @@
-= provide(:title, @project.name)
-%h1= @project.name
-%p Add a log to your project:
+- provide(:title, @project.name)
+.row
+	%aside.span4
+		%section
+			%h1
+				= gravatar_for @user
+				= @user.name
+				%br
+				= @project.name
+	%aside
+	%h1 
+		= @project.name
+	%br
+	.row
+		.span6.offset3
+			%h3
+				New data entry:
+			= form_for(:log, url: project_logs_path(@project)) do |f|
+				= f.label :data_reg
+				= f.number_field :data_reg
+				= f.submit "Continue", class: "btn btn-large btn-primary"
+			- if @project.logs.any?
+				%h3
+					Data entries (
+					= @project.logs.count
+					)
+				%ol.projects
+					= render @logs

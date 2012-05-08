@@ -20,5 +20,10 @@ namespace :db do
       content = Faker::Lorem.sentence(5)
       users.each { |user| user.projects.create!(name: content) }
     end
+    projects = admin.projects.all(limit: 6)
+    50.times do
+      content = 1 + rand(6)
+      projects.each { |log| project.logs.create!(data_reg: content) }
+    end
   end
 end

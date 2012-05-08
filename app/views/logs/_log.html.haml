@@ -1,0 +1,8 @@
+%li
+	%span.content
+		= log.data_reg
+	%span.timestamp
+		Posted
+		= time_ago_in_words(log.created_at)
+		ago.
+		

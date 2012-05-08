@@ -11,9 +11,10 @@
 #
 
 class Project < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name, :description#, :logs_attributes
   belongs_to :user
   has_many :logs
+  #accept_nested_attributes_for :logs
 
   validates :user_id, presence: true
   validates :name, presence: true, length: {maximum: 140}
