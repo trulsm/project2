@@ -26,3 +26,9 @@
 					)
 				%ol.projects
 					= render @logs
+			%br
+			Sum of data entries:
+			= akkumulert(@project)
+			%br
+			Mean value of data entries:
+			= mean_value(@project)
