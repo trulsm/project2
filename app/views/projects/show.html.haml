@@ -27,8 +27,16 @@
 				%ol.projects
 					= render @logs
 			%br
+			Min value of data entries:
+			= @project.logs.minimum('data_reg')
+			%br
+			Max value of data entries:
+			= @project.logs.maximum('data_reg')
+			%br
 			Sum of data entries:
-			= akkumulert(@project)
+			%strong
+				= @project.logs.sum('data_reg')
 			%br
 			Mean value of data entries:
-			= mean_value(@project)
+			%strong
+				= @project.logs.average('data_reg')
