@@ -16,7 +16,7 @@ FactoryGirl.define do
   end
 
   factory :log do
-    data_reg 1
+    float_entry 1
     project
   end
 end

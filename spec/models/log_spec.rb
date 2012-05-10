@@ -2,11 +2,11 @@
 #
 # Table name: logs
 #
-#  id         :integer         not null, primary key
-#  project_id :integer
-#  created_at :datetime        not null
-#  updated_at :datetime        not null
-#  data_reg   :integer
+#  id          :integer         not null, primary key
+#  project_id  :integer
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  float_entry :float
 #
 
 require 'spec_helper'
@@ -16,13 +16,13 @@ describe Log do
   let(:project) { FactoryGirl.create(:project) }
 
   before do
-    @log = project.logs.build(data_reg: 1)
+    @log = project.logs.build(float_entry: 1)
   end
 
 	subject {@log}
 
 	it {should respond_to(:project_id)}
-  it {should respond_to(:data_reg)}
+  it {should respond_to(:float_entry)}
   its(:project) { should == project }
 
   it { should be_valid }

@@ -4,7 +4,7 @@ module LogsHelper
 		if project.logs.any?
 			akkumulert = 0
 			project.logs.each do |log|
-				akkumulert = akkumulert + log.data_reg
+				akkumulert = akkumulert + log.float_entry
 			end
 			return akkumulert.to_f
 		else
@@ -16,7 +16,7 @@ module LogsHelper
 		if project.logs.any?
 			sum = 0
 			project.logs.each do |log|
-				sum = sum + log.data_reg
+				sum = sum + log.float_entry
 			end
 			return (sum/project.logs.count).to_f
 		else

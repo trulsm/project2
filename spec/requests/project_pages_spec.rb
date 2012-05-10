@@ -59,7 +59,7 @@ describe "ProjectPages" do
     describe "submit data entry with valid information" do
 
       before do
-        fill_in "Data reg",         with: (1+rand(6))
+        fill_in "Float entry",         with: (1+rand(6))
       end
       it "should create a project" do
         expect { click_button "Continue" }.should change(Log, :count).by(1)

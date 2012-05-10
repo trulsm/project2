@@ -23,7 +23,7 @@ namespace :db do
     projects = admin.projects.all(limit: 6)
     50.times do
       content = 1 + rand(6)
-      projects.each { |log| project.logs.create!(data_reg: content) }
+      projects.each { |log| project.logs.create!(float_entry: content) }
     end
   end
 end

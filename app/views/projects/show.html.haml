@@ -16,8 +16,8 @@
 			%h3
 				New data entry:
 			= form_for(:log, url: project_logs_path(@project)) do |f|
-				= f.label :data_reg
-				= f.number_field :data_reg
+				= f.label :float_entry
+				= f.number_field :float_entry
 				= f.submit "Continue", class: "btn btn-large btn-primary"
 			- if @project.logs.any?
 				%h3
@@ -27,17 +27,17 @@
 				%br
 				Sum of data entries:
 				%strong
-					= @project.logs.sum('data_reg')
+					= @project.logs.sum('float_entry')
 				%br
 				Mean value of data entries:
 				%strong
-					= @project.logs.average('data_reg')
+					= @project.logs.average('float_entry')
 				%br
 				Min value of data entries:
-				= @project.logs.minimum('data_reg')
+				= @project.logs.minimum('float_entry')
 				%br
 				Max value of data entries:
-				= @project.logs.maximum('data_reg')
+				= @project.logs.maximum('float_entry')
 				%br
 				%ol.projects
 					= render @logs
