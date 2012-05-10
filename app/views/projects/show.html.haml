@@ -5,14 +5,16 @@
 			%h1
 				= gravatar_for @user
 				= @user.name
-				%br
+		%section.description
+			%h1
 				= @project.name
-	%aside
-	%h1 
-		= @project.name
-	%br
-	.row
-		.span6.offset3
+			%p
+				= @project.description
+	%aside.span8
+		%h1 
+			= @project.name
+		%br
+		.row
 			%h3
 				New data entry:
 			= form_for(:log, url: project_logs_path(@project)) do |f|
