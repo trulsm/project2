@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: projects
+#
+#  id          :integer         not null, primary key
+#  name        :string(255)
+#  user_id     :integer
+#  created_at  :datetime        not null
+#  updated_at  :datetime        not null
+#  description :text
+#
+
 require 'spec_helper'
 
 describe Project do
@@ -37,15 +49,27 @@ describe Project do
       end.should raise_error(ActiveModel::MassAssignmentSecurity::Error)
     end    
   end
-end# == Schema Information
-#
-# Table name: projects
-#
-#  id          :integer         not null, primary key
-#  name        :string(255)
-#  user_id     :integer
-#  created_at  :datetime        not null
-#  updated_at  :datetime        not null
-#  description :text
-#
 
+  describe "log associations" do
+
+    before { @project.save }
+    let!(:older_log) do 
+      FactoryGirl.create(:log, project: @project, created_at: 1.day.ago)
+    end
+    let!(:newer_log) do
+      FactoryGirl.create(:log, project: @project, created_at: 1.hour.ago)
+    end
+
+    it "should have the right logs in the right order" do
+      @project.logs.should == [newer_log, older_log]
+    end
+
+    it "should destroy associated logs" do
+      logs = @project.logs
+      @project.destroy
+      logs.each do |log|
+        Log.find_by_id(log.id).should be_nil
+      end
+    end
+  end
+end

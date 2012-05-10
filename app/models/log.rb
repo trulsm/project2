@@ -16,4 +16,6 @@ class Log < ActiveRecord::Base
   validates :project_id, presence: true
   validates :data_reg, presence: true
 
+  default_scope order: 'logs.created_at DESC'
+
 end
