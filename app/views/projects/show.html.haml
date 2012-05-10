@@ -25,20 +25,7 @@
 					= @project.logs.count
 					)
 				%br
-				Sum of data entries:
-				%strong
-					= @project.logs.sum('float_entry')
-				%br
-				Mean value of data entries:
-				%strong
-					= @project.logs.average('float_entry')
-				%br
-				Min value of data entries:
-				= @project.logs.minimum('float_entry')
-				%br
-				Max value of data entries:
-				= @project.logs.maximum('float_entry')
-				%br
+				= render 'data_stats'
 				%ol.projects
 					= render @logs
 
