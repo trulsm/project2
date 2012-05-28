@@ -17,6 +17,7 @@ FactoryGirl.define do
 
   factory :log do
     float_entry 1
+    log_date Date.current
     project
   end
 end

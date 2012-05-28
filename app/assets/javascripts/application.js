@@ -10,7 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
+//= require bootstrap
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap
+//= require js/jquery-1.7.2.min
+//= require js/jquery-ui-1.8.20.custom.min
+//= require highcharts
 //= require_tree .
+

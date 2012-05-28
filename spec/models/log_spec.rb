@@ -7,6 +7,7 @@
 #  created_at  :datetime        not null
 #  updated_at  :datetime        not null
 #  float_entry :float
+#  log_date    :date
 #
 
 require 'spec_helper'
@@ -16,13 +17,14 @@ describe Log do
   let(:project) { FactoryGirl.create(:project) }
 
   before do
-    @log = project.logs.build(float_entry: 1)
+    @log = project.logs.build(float_entry: 1, log_date: Date.current)
   end
 
 	subject {@log}
 
 	it {should respond_to(:project_id)}
   it {should respond_to(:float_entry)}
+  it {should respond_to(:log_date)}  
   its(:project) { should == project }
 
   it { should be_valid }

@@ -1,0 +1,40 @@
+<% provide(:title, @project.name)%>
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    new Highcharts.Chart({
+      chart: { renderTo: 'chart_div' }
+      title: { text: 'Orders by Day' },
+    	xAxis: { type: 'datetime' },
+    	yAxis: {
+      	title: { text: 'Dollars'}
+    	},
+    	series: [{
+      	data: [1, 2, 5, 7, 3]
+    	}]
+    });
+  });
+</script>
+<div class="row">
+	<h1><%= @project.name%></h1>
+</div>
+<div class="row">
+	<div id="chart_div" style="width: 560px; height: 300px;"></div>
+	<h3>New data entry:</h3>
+	<%= form_for(:log, url: project_logs_path(@project)) do |f|%>
+		<%= f.label :float_entry%>
+		<%= f.number_field :float_entry%>
+
+		<%= f.label :log_date%>
+		<%= f.text_field :log_date%>
+
+		<%= f.submit "Create my account", class: "btn btn-large btn-primary"%>
+	<% end %>
+	<% if @project.logs.any? %>
+		<h3>Data entries (<%= @project.logs.count %>)
+		<br/>
+		<%= render 'data_stats'%>
+		<ol class="projects">
+			<%= render @logs%>
+		</ol>
+	<% end %>
+</div>

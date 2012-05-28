@@ -26,7 +26,7 @@ describe "ProjectPages" do
         fill_in "Description",  with: "This is an example description"
   		end
       it "should not create a project" do
-        expect { click_button "Continue" }.should_not change(Project, :count)
+        expect { click_button 'Save Project'}.should_not change(Project, :count)
       end
 
   	end
@@ -38,7 +38,7 @@ describe "ProjectPages" do
         fill_in "Description",  with: "This is an example description"
   		end
       it "should create a project" do
-        expect { click_button "Continue" }.should change(Project, :count).by(1)
+        expect { click_button "Save Project" }.should change(Project, :count).by(1)
       end
   	end
   end
@@ -51,7 +51,7 @@ describe "ProjectPages" do
     
     describe "submit data entry with invalid information" do
       it "should not create a log" do
-        expect { click_button "Continue" }.should_not change(Log, :count)
+        expect { click_button "Save Log" }.should_not change(Log, :count)
       end
 
     end
@@ -62,7 +62,7 @@ describe "ProjectPages" do
         fill_in "Float entry",         with: (1+rand(6))
       end
       it "should create a project" do
-        expect { click_button "Continue" }.should change(Log, :count).by(1)
+        expect { click_button "Save Log" }.should change(Log, :count).by(1)
       end
     end
 

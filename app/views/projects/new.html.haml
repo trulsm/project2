@@ -2,12 +2,12 @@
 %h1 New Project
 .row
 	.span6.offset3
-		= form_for(:project, url: projects_path) do |f|
-			= f.label :name
-			= f.text_field :name
-			= f.label :description
-			= f.text_field :description
-			= f.submit "Continue", class: "btn btn-large btn-primary"
+		= simple_form_for(:project, url: projects_path) do |f|
+			= f.error_notification
+			= f.input :name
+			= f.input :description
+			= f.error :base
+			= f.button :submit, text: "Continue"#, class: "btn btn-large btn-primary"
 		%p 
 			Need any help?
 			= link_to "Click here!", "#"
