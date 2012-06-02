@@ -18,4 +18,5 @@ class Project < ActiveRecord::Base
   validates :user_id, presence: true
   validates :name, presence: true, length: {maximum: 140}
   default_scope order: 'projects.created_at DESC'
+
 end

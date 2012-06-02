@@ -18,6 +18,6 @@ class Log < ActiveRecord::Base
   validates :float_entry, presence: true
   validates :log_date, presence: true
 
-  default_scope order: 'logs.created_at DESC'
+  default_scope order: 'logs.log_date DESC'
 
 end

@@ -53,11 +53,11 @@ describe Project do
   describe "log associations" do
 
     before { @project.save }
-    let!(:older_log) do 
-      FactoryGirl.create(:log, project: @project, created_at: 1.day.ago)
+    let!(:newer_log) do 
+      FactoryGirl.create(:log, project: @project, created_at: 1.day.ago, log_date: Date.current)
     end
-    let!(:newer_log) do
-      FactoryGirl.create(:log, project: @project, created_at: 1.hour.ago)
+    let!(:older_log) do
+      FactoryGirl.create(:log, project: @project, created_at: 1.hour.ago, log_date: 1.day.ago.to_date)
     end
 
     it "should have the right logs in the right order" do

@@ -60,11 +60,11 @@ describe "ProjectPages" do
 
       before do
         fill_in "Float entry",         with: (1+rand(6))
+        fill_in "Log date",            with: Date.current
       end
       it "should create a project" do
-        expect { click_button "Save Log" }.should change(Log, :count).by(1)
+        expect { click_button "Save data entry" }.should change(Log, :count).by(1)
       end
     end
-
   end
 end
